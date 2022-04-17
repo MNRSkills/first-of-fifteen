@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import Region from "./Components/region";
 import Statistics from "./Components/statistics";
 import "./App.css";
 
-
-
-
-
 function App() {
   const [data, setData] = useState([]);
-  console.log("THIS IS STATE", data)
+  console.log("THIS IS STATE", data);
   const stats = {
     response: [
       {
@@ -122,40 +118,42 @@ function App() {
       },
     ],
   };
-  const callAPI = async () => {
-    try {
-      await axios
-        .get("http://localhost:8000/countries")
-        .then(function (response) {
-          // console.log(response.data);
-          setData(response.data);
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
-    } catch (error) {}
-  };
+  // const callAPI = async () => {
+  //   try {
+  //     await axios
+  //       .get("http://localhost:8000/countries")
+  //       .then(function (response) {
+  //         // console.log(response.data);
+  //         setData(response.data);
+  //       })
+  //       .catch(function (error) {
+  //         console.error(error);
+  //       });
+  //   } catch (error) {}
+  // };
 
-
-  const statistics = () =>{
-    stats.response.map((statistic, index)=> {
-      return setData(statistic);
-    })
-  }
+  // const statistics = () =>{
+  //   stats.response.map((statistic, index)=> {
+  //     return setData([statistic]);
+  //   })
+  // }
 
   useEffect(() => {
-    statistics();
+    // statistics();
   }, []);
-
-
-  
 
   return (
     <div className='app'>
+      <div className="main-countries">
       {funkData.post.map((title, index) => {
         return <Region title={title} key={index} />;
       })}
-      <Statistics data={data}/>
+      </div>
+      <div className="main-statistics">
+        {stats.response.map((statistic, index) => {
+          return <Statistics data={statistic} key={index} />;
+        })}
+      </div>
     </div>
   );
 }

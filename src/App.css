@@ -2,3 +2,8 @@
   background-color: red;
   /* height: 100vh; */
 }
+
+
+.main-statistics {
+  display: flex;
+}
